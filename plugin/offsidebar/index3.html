@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>简单实用的Bootstrap隐藏滑动侧边栏插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+    <link href="src/bootstrap-off-canvas-nav.css" rel="stylesheet">
+	
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body style="padding-top:70px;">
+	<!-- Static navbar -->
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">Link</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Link</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+	<div class="container">
+      <!-- Main component for a primary marketing message or call to action -->
+      <header class="htmleaf-header">
+			<h1>简单实用的Bootstrap隐藏滑动侧边栏插件 <span>A jQuery plugin designed to provide gallery view for images</span></h1>
+			<div class="htmleaf-links">
+				<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+				<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/jQuery/Menu-Navigation/201512222937.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+			</div>
+			<div class="htmleaf-demo center">
+			  <a href="index.html">顶部静止菜单（右侧）</a>
+			  <a href="index2.html">顶部静止菜单（左侧）</a>
+			  <a href="index3.html" class="current">顶部固定菜单（右侧）</a>
+			  <a href="index4.html">顶部固定菜单（左侧）</a>
+			</div>
+		</header>
+
+      <div class="jumbotron mt50">
+        <h2>Navbar example(顶部固定菜单)</h2>
+        <p>缩放你的浏览器来查看侧边栏效果！</p>
+        <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="#" role="button">View navbar docs &raquo;</a>
+        </p>
+      </div>
+      <div class="jumbotron mt50">
+        <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="#" role="button">View navbar docs &raquo;</a>
+        </p>
+      </div>
+
+
+    </div> <!-- /container -->
+	
+	<!-- <script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script> -->
+	<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+	<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="src/bootstrap-off-canvas-nav.js"></script>
+</body>
+</html>

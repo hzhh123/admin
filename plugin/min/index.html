@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<link href="js/Checkable.css" rel="stylesheet" type="text/css" />
+   
+
+<script src="js/jquery-1.8.1.min.js" type="text/javascript"></script>
+
+
+<script src="js/Checkable.js" type="text/javascript"></script>
+<script>
+
+$().ready(function(){
+
+  $('input[type=checkbox],input[type=radio]').Checkable({
+      color: 'blue'
+  });
+
+});
+</script>
+
+<body >
+
+<div style=" margin-left:30px;">
+<br />
+单选按钮美化
+<input id="Radio1" type="radio"  class="myClass" value="yes" id="answer" name="answer" data-label="大连" data-color="blue"/>
+<input id="Radio2" type="radio"  class="myClass" value="yes" id="answer" name="answer" data-label="深圳"/>
+<br />
+
+多选按钮美化
+
+<input type="text" name="name">
+<input type="checkbox" name="name" value="0" data-label="云南"/>
+<input type="checkbox" class="myClass" value="yes" id="answer" name="answer" data-label="大连"/>
+<input type="checkbox" class="myClass" value="yes" id="Checkbox1" data-label="沈阳" name="answer"/>
+<input type="checkbox" class="myClass" value="yes" id="Checkbox2" name="answer" data-label="深圳"/>
+<input type="checkbox" class="myClass" value="yes" id="Checkbox3" name="answer" data-label="上海"/>
+</div>
+</body>

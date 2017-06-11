@@ -1,0 +1,24 @@
+
+.greenyellow{background: greenyellow; color: #fff;}
+/*选项卡*/
+.layout-main{position: absolute;top:50px;right:0;bottom: 30px;left:220px;width:auto;overflow:hidden;overflow-y: auto;background-color: #fff;z-index:998;height: calc(100% - 45px)}
+.layout-main-tab{height: 39px;line-height: 39px;overflow: hidden;position: relative;background: #f2f2f2;border-bottom: solid 1px #0e9aef;}
+.layout-main-body{margin:0;position: absolute;top: 40px;bottom: 0;left: 0;right: 0;overflow:hidden;height: calc(100% - 40px);}
+.tab-nav-content a:hover,.tab-nav-content a:focus{
+    text-decoration: none;
+}
+/*菜单选项卡*/
+.tab-btn{position: absolute;width: 40px;height: 39px;text-align: center;color: #999;z-index: 2;top: 0;
+    background: #f2f2f2;border: 0;outline: 0;cursor:pointer;}
+.tab-btn i{font-size:20px;}
+.tab-btn.btn-left{left: 0px;border-right: solid 1px #ccc;}
+.tab-btn.btn-right{right: 0px;border-left: solid 1px #ccc;}
+.tab-nav{margin-left: 40px;width: 100000px;height: 40px;line-height: 40px;overflow: hidden;}
+.tab-nav-content{float: left;margin-left: 0px;}
+.tab-nav-content a{display:block;color: #999;cursor: auto;border-right: solid 1px #ddd;padding: 0 15px;float:left;}
+.tab-nav-content a:hover{color: #333;}
+.tab-nav-content a.active{color: #33AECC;background: #fff;}
+.tab-nav-content a i{color:#ccc;font-size:12px;vertical-align:top;}
+.tab-nav-content a i:hover{color:#FF5722;}
+.tab-nav-content a.active i:hover{color: #FF5722;}
+.tab-nav-content .content-tab{transition: all .3s ease-out 0s;-webkit-transition: all .3s ease-out 0s;}
