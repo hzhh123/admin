@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="../plugin/bootstrapV3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugin/font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../plugin/bootstrap-table/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../plugin/checkradios/css/jquery.checkradios.css">
+</head>
+<body>
+<h4>example1</h4>
+<table data-toggle="table">
+    <thead>
+    <tr>
+        <th>Item ID</th>
+        <th>Item Name</th>
+        <th>Item Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>Item 1</td>
+        <td>$1</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Item 2</td>
+        <td>$2</td>
+    </tr>
+    </tbody>
+</table>
+<h4>example2</h4>
+<table data-toggle="table" data-url="data1.json">
+    <thead>
+    <tr>
+        <th data-field="id">Item ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+        <th data-field="option">option</th>
+    </tr>
+    </thead>
+</table>
+<h4>example3</h4>
+<table id="table"></table>
+<h4>example4</h4>
+<table id="table1"></table>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+<script type="text/javascript" src="../plugin/bootstrapV3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugin/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugin/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+<script type="text/javascript" src="../plugin/checkradios/js/jquery.checkradios.js"></script>
+</body>
+<script type="text/javascript">
+    $(function () {
+        $('#table').bootstrapTable({
+            columns: [{
+                field: 'id',
+                title: 'Item ID'
+            }, {
+                field: 'name',
+                title: 'Item Name'
+            }, {
+                field: 'price',
+                title: 'Item Price'
+            }],
+            data: [{
+                id: 1,
+                name: 'Item 1',
+                price: '$1'
+            }, {
+                id: 2,
+                name: 'Item 2',
+                price: '$2'
+            }]
+        });
+    })
+    //romate
+    $('#table1').bootstrapTable({
+        url: 'data1.json',
+        showColumns:true,
+        search:true,
+        pagination:true,//显示分页
+        showRefresh:true,
+        showToggle:true,
+        sortOrder:'asc',
+        sortStable:true,
+        pageSize:1,
+        columns: [{
+            field: 'id',
+            title: 'Item ID'
+        }, {
+            field: 'name',
+            title: 'Item Name'
+        }, {
+            field: 'price',
+            title: 'Item Price'
+        } ]
+    });
+
+</script>
+</html>

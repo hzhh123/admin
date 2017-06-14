@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../plugin/font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../plugin/bootstrap-dialog/css/bootstrap-dialog.min.css">
+    <link rel="stylesheet" href="../plugin/select2/css/select2.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="btn-group col-md-3">
+        <button class="btn btn-primary" id="add"><i class="fa fa-plus-circle"></i> 添加</button>
+        <button class="btn btn-danger"><i class="fa fa-trash"></i> 删除</button>
+        <button class="btn btn-warning"><i class="fa fa-edit"></i> 修改</button>
+    </div>
+   <!--<div class="pull-right">-->
+       <!--<form action="" class="form-horizontal">-->
+           <!--<div class="form-inline">-->
+               <!--<input type="text" class="form-control">-->
+               <!--<button class="btn btn-primary">搜索</button>-->
+           <!--</div>-->
+       <!--</form>-->
+   <!--</div>-->
+    <div class="col-md-offset-9">
+        <form action="" class="form-horizontal">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="请输入搜索关键字">
+                <span class="input-group-addon" style="cursor: pointer;">搜索</span>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugin/bootstrap-dialog/js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="../plugin/select2/js/select2.full.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#add').click(function () {
+            BootstrapDialog.show({
+                title: '<i class="fa fa-plus-circle"></i> 新增',
+                message: $('<div style="padding: 15px;"></div>').load('addRole.html'),
+               // message: $('#a'),
+                onshown:function (dialogRef) {
+                    var ids=new Array();
+                    ids.push(1);
+                    ids.push(2);
+                    $('#s1_menu').val(ids).trigger('change');
+                },
+                buttons: [{
+                    label: '确定',
+                    cssClass:'btn-primary',
+                    action: function(dialog) {
+                        dialog.close();
+                        alert($('#s1_menu').val());
+                    }
+                }, {
+                    label: '关闭',
+                    action: function(dialog) {
+                        dialog.close();
+                    }
+                }]
+            });
+
+        })
+
+
+
+
+    })
+</script>
+</body>
+</html>

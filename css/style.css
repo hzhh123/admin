@@ -3,7 +3,7 @@
 /*选项卡*/
 .layout-main{position: absolute;top:50px;right:0;bottom: 30px;left:220px;width:auto;overflow:hidden;overflow-y: auto;background-color: #fff;z-index:998;height: calc(100% - 45px)}
 .layout-main-tab{height: 39px;line-height: 39px;overflow: hidden;position: relative;background: #f2f2f2;border-bottom: solid 1px #0e9aef;}
-.layout-main-body{margin:0;position: absolute;top: 40px;bottom: 0;left: 0;right: 0;overflow:hidden;height: calc(100% - 40px);}
+.layout-main-body{margin:0;position: absolute;top: 40px;bottom: 0;left: 0;right: 0;overflow:hidden;height: calc(100% - 90px);}
 .tab-nav-content a:hover,.tab-nav-content a:focus{
     text-decoration: none;
 }

@@ -32,13 +32,34 @@
                 display: inline-block;
                 margin-left:5px;
             }
-
+            .footer .sidebar-toggle{
+                display: none;
+            }
+            .footer-tip{
+                text-align: center;position: relative;top:10px;color: #333333;
+            }
         }
         @media(max-width: 768px) {
           .toggle-sidebar{
               display: none;
           }
-
+            aside{
+                position: absolute;
+                top:0px;
+                z-index: 10000;
+            }
+            .layout-main{
+                left: 0px;
+            }
+            .footer .sidebar-toggle{
+                display: inline-block;
+                color: #fff;
+            }
+            .footer-tip{
+               position: relative;top:-10px;color: #333333;
+                display: inline;
+                left:calc(30% - 10px)
+            }
         }
         .sidebar-search{
             margin:10px;
@@ -51,6 +72,16 @@
             margin-left: 0px;
             margin-top: 50px;
         }
+        .footer{
+            position: fixed;
+            bottom: 0;
+            height: 40px;
+            width:100%;
+            border-top:1px solid #ccc;
+            background-color: #CCCCCC;
+        }
+
+
     </style>
 </head>
 <body>
@@ -98,93 +129,6 @@
             </form>
         </div>
         <ul class="metismenu" id="menu1">
-            <li>
-                <a class="has-arrow" href="#">
-                    <span class="fa fa-fw fa-github fa-lg"></span>
-                    metisMenu
-                </a>
-                <ul aria-expanded="true">
-                    <li>
-                        <a href="https://github.com/onokumus/metisMenu">
-                            <span class="fa fa-fw fa-code-fork"></span> Fork
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/onokumus/metisMenu">
-                            <span class="fa fa-fw fa-star"></span> Star
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/onokumus/metisMenu/issues">
-                            <span class="fa fa-fw fa-exclamation-triangle"></span> Issues
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="" aria-expanded="false">Menu 0</a>
-                <ul aria-expanded="false">
-                    <li><a href="#">item 0.1</a></li>
-                    <li><a href="#">item 0.2</a></li>
-                    <li><a href="http://onokumus.com">onokumus</a></li>
-                    <li><a href="#">item 0.4</a></li>
-                </ul>
-            </li>
-            <li id="removable">
-                <a class="has-arrow" href="" aria-expanded="false">Menu 1</a>
-                <ul aria-expanded="false">
-                    <li><a href="demo1.html"><span>item 1.1</span></a></li>
-                    <li><a href="#">item 1.2</a></li>
-                    <li>
-                        <a class="has-arrow" href="#" aria-expanded="false">Menu 1.3</a>
-                        <ul aria-expanded="false">
-                            <li><a href="#">item 1.3.1</a></li>
-                            <li><a href="#">item 1.3.2</a></li>
-                            <li><a href="#">item 1.3.3</a></li>
-                            <li><a href="#">item 1.3.4</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">item 1.4</a></li>
-                    <li>
-                        <a class="has-arrow" href="#" aria-expanded="false">Menu 1.5</a>
-                        <ul aria-expanded="false">
-                            <li><a href="#">item 1.5.1</a></li>
-                            <li><a href="#">item 1.5.2</a></li>
-                            <li><a href="#">item 1.5.3</a></li>
-                            <li><a href="#">item 1.5.4</a></li>
-                            <li><a href="#">item 1.5.1</a></li>
-                            <li><a href="#">item 1.5.2</a></li>
-                            <li><a href="#">item 1.5.3</a></li>
-                            <li><a href="#">item 1.5.4</a></li>
-                            <li><a href="#">item 1.5.1</a></li>
-                            <li><a href="#">item 1.5.2</a></li>
-                            <li><a href="#">item 1.5.3</a></li>
-                            <li><a href="#">item 1.5.4</a></li>
-                            <li><a href="#">item 1.5.1</a></li>
-                            <li><a href="#">item 1.5.2</a></li>
-                            <li><a href="#">item 1.5.3</a></li>
-                            <li><a href="#">item 1.5.4</a></li>
-                            <li><a href="#">item 1.5.1</a></li>
-                            <li><a href="#">item 1.5.2</a></li>
-                            <li><a href="#">item 1.5.3</a></li>
-                            <li><a href="#">item 1.5.4</a></li>
-                            <li><a href="#">item 1.5.1</a></li>
-                            <li><a href="#">item 1.5.2</a></li>
-                            <li><a href="#">item 1.5.3</a></li>
-                            <li><a href="#">item 1.5.4</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="#" aria-expanded="false">Menu 2</a>
-                <ul aria-expanded="false">
-                    <li><a href="#">item 2.1</a></li>
-                    <li><a href="#">item 2.2</a></li>
-                    <li><a href="#">item 2.3</a></li>
-                    <li><a href="#">item 2.4</a></li>
-                </ul>
-            </li>
         </ul>
     </nav>
 </aside>
@@ -202,18 +146,40 @@
         <div class="layout-main-body" >
             <iframe class="body-iframe" id="iframe0" name="iframe0" width="100%" height="100%" src="test.html" frameborder="0" data-id="home.html" seamless></iframe>
         </div>
+        <div class="footer">
+            <a href="#" class="sidebar-toggle" title="侧边导航菜单切换"><i class="fa fa-chevron-circle-right fa-3x"></i></a>
+            <div class="footer-tip">2017@测试</div>
+        </div>
     </section>
+
 </div>
+
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
 <script type="text/javascript" src="../plugin/bootstrapV3/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../plugin/metisMenu/js/metisMenu.js"></script>
 <script type="text/javascript" src="../plugin/scroll/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="../js/style.js"></script>
 <script type="text/javascript">
     $(function () {
-        $('#menu1').metisMenu()
         init(50);
+        resize();
         function init(h){
             $('aside').height($(window).height()-h);
+            if($(window).width()<768){
+                $('aside').animate({'left':-220},"fast");
+                $('.layout-main').animate({'left':0},"fast");
+            }else {
+                $('aside').animate({'left':0},"fast");
+                $('.layout-main').animate({'left':220},"fast");
+            }
+            $('#overlay').css('display','none');
+
+        }
+
+        function resize(){
+            $(window).resize(function () {
+                init(50);
+            })
         }
 
         $('aside').niceScroll({
@@ -224,6 +190,48 @@
             cursorborder:"0",
             cursorborderradius:"5px"
         });
+
+        $('.toggle-sidebar').click(function () {
+            if($('aside').css('left')=='0px'){
+                $('aside').animate({'left':-220},"fast");
+                $('.layout-main').animate({'left':0},"fast");
+
+            }
+            if($('aside').css('left')=='-220px'){
+                $('aside').animate({'left':0},"fast");
+                $('.layout-main').animate({'left':220},"fast");
+            }
+            return false;
+        })
+
+        var docHeight = $(document).height(); //获取窗口高度
+
+       // 添加遮盖层
+        $('body').append('<div id="overlay"></div>');
+        $('#overlay')
+            .height(docHeight)
+            .css({
+                'opacity': .8, //透明度
+                'position': 'absolute',
+                'top': 0,
+                'left': 220,
+                'background-color': 'black',
+                'width': '100%',
+                'display':'none',
+                'z-index': 5000 //保证这个悬浮层位于其它内容之上
+            });
+       $('#overlay').on('click',function () {
+           $(this).css('display','none');
+           //$('aside').css('display','none');
+           //$(this).animate({'left':-$(window).width()},"fast");
+           $('aside').animate({'left':-220},"fast");
+       });
+       $('.sidebar-toggle').click(function () {
+           $('aside').animate({'left':0},"fast");
+           $('#overlay').css('display','block');
+           //$('aside').css('display','block');
+           //$('#overlay').animate({'left':220},"fast");
+       })
     })
 </script>
 </body>

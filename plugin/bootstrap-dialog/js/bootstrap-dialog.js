@@ -17,13 +17,7 @@
 
     // CommonJS module is defined
     if (typeof module !== 'undefined' && module.exports) {
-        var isNode = (typeof process === "object") && (typeof process.versions === "object");
-        var isElectron = isNode && ('electron' in process.versions);
-        if (isElectron) {
-            root.BootstrapDialog = factory(root.jQuery);
-        } else {
-            module.exports = factory(require('jquery'), require('bootstrap'));
-        }
+        module.exports = factory(require('jquery'), require('bootstrap'));
     }
     // AMD module is defined
     else if (typeof define === "function" && define.amd) {
@@ -197,7 +191,7 @@
     /**
      *  Some constants.
      */
-    BootstrapDialog.NAMESPACE = 'bootstrapV3-dialog';
+    BootstrapDialog.NAMESPACE = 'bootstrap-dialog';
     BootstrapDialog.TYPE_DEFAULT = 'type-default';
     BootstrapDialog.TYPE_INFO = 'type-info';
     BootstrapDialog.TYPE_PRIMARY = 'type-primary';
@@ -224,6 +218,8 @@
     BootstrapDialog.BUTTON_SIZES[BootstrapDialog.SIZE_WIDE] = '';
     BootstrapDialog.BUTTON_SIZES[BootstrapDialog.SIZE_LARGE] = 'btn-lg';
     BootstrapDialog.ICON_SPINNER = 'glyphicon glyphicon-asterisk';
+    BootstrapDialog.BUTTONS_ORDER_CANCEL_OK = 'btns-order-cancel-ok';
+    BootstrapDialog.BUTTONS_ORDER_OK_CANCEL = 'btns-order-ok-cancel';
 
     /**
      * Default options.
@@ -244,7 +240,8 @@
         draggable: false,
         animate: true,
         description: '',
-        tabindex: -1
+        tabindex: -1,
+        btnsOrder: BootstrapDialog.BUTTONS_ORDER_CANCEL_OK
     };
 
     /**
@@ -779,7 +776,7 @@
         createCloseButton: function () {
             var $container = $('<div></div>');
             $container.addClass(this.getNamespace('close-button'));
-            var $icon = $('<button class="close"></button>');
+            var $icon = $('<button class="close" aria-label="close"></button>');
             $icon.append(this.options.closeIcon);
             $container.append($icon);
             $container.on('click', {dialog: this}, function (event) {
@@ -840,11 +837,23 @@
                 $button.append(button.label);
             }
 
+            // title
+            if (typeof button.title !== 'undefined') {
+                $button.attr('title',  button.title);
+            }
+
             // Css class
             if (typeof button.cssClass !== 'undefined' && $.trim(button.cssClass) !== '') {
                 $button.addClass(button.cssClass);
             } else {
                 $button.addClass('btn-default');
+            }
+
+            // Data attributes
+            if (typeof button.data === 'object' && button.data.constructor === {}.constructor) {
+                $.each(button.data, function (key, value) {
+                    $button.attr('data-' + key, value);
+                });
             }
 
             // Hotkey
@@ -1065,6 +1074,9 @@
                     $(this).remove();
                 }
                 BootstrapDialog.moveFocus();
+                if ($('.modal').hasClass('in')) {
+                  $('body').addClass('modal-open');
+                }
             });
 
             // Backdrop, I did't find a way to change bs3 backdrop option after the dialog is popped up, so here's a new wheel.
@@ -1080,7 +1092,7 @@
                 var dialog = event.data.dialog;
                 if (typeof dialog.registeredButtonHotkeys[event.which] !== 'undefined') {
                     var $button = $(dialog.registeredButtonHotkeys[event.which]);
-                    !$button.prop('disabled') && $button.focus().trigger('click');
+                    !$button.prop('disabled') && !$button.is(':focus') && $button.focus().trigger('click');
                 }
             });
 
@@ -1213,6 +1225,7 @@
             closable: false,
             draggable: false,
             buttonLabel: BootstrapDialog.DEFAULT_TEXTS.OK,
+            buttonHotkey: null,
             callback: null
         };
 
@@ -1229,6 +1242,7 @@
         dialog.setData('callback', alertOptions.callback);
         dialog.addButton({
             label: alertOptions.buttonLabel,
+            hotkey: alertOptions.buttonHotkey,
             action: function (dialog) {
                 if (typeof dialog.getData('callback') === 'function' && dialog.getData('callback').call(this, true) === false) {
                     return false;
@@ -1282,8 +1296,11 @@
             draggable: false,
             btnCancelLabel: BootstrapDialog.DEFAULT_TEXTS.CANCEL,
             btnCancelClass: null,
+            btnCancelHotkey: null,
             btnOKLabel: BootstrapDialog.DEFAULT_TEXTS.OK,
             btnOKClass: null,
+            btnOKHotkey: null,
+            btnsOrder: BootstrapDialog.defaultOptions.btnsOrder,
             callback: null
         };
         if (typeof arguments[0] === 'object' && arguments[0].constructor === {}.constructor) {
@@ -1300,28 +1317,34 @@
 
         var dialog = new BootstrapDialog(confirmOptions);
         dialog.setData('callback', confirmOptions.callback);
-        dialog.addButton({
-            label: confirmOptions.btnCancelLabel,
-            cssClass: confirmOptions.btnCancelClass,
-            action: function (dialog) {
-                if (typeof dialog.getData('callback') === 'function' && dialog.getData('callback').call(this, false) === false) {
-                    return false;
-                }
 
-                return dialog.close();
-            }
-        });
-        dialog.addButton({
-            label: confirmOptions.btnOKLabel,
-            cssClass: confirmOptions.btnOKClass,
-            action: function (dialog) {
-                if (typeof dialog.getData('callback') === 'function' && dialog.getData('callback').call(this, true) === false) {
-                    return false;
-                }
+        var buttons = [{
+                label: confirmOptions.btnCancelLabel,
+                cssClass: confirmOptions.btnCancelClass,
+                hotkey: confirmOptions.btnCancelHotkey,
+                action: function (dialog) {
+                    if (typeof dialog.getData('callback') === 'function' && dialog.getData('callback').call(this, false) === false) {
+                        return false;
+                    }
 
-                return dialog.close();
-            }
-        });
+                    return dialog.close();
+                }
+            }, {
+                label: confirmOptions.btnOKLabel,
+                cssClass: confirmOptions.btnOKClass,
+                hotkey: confirmOptions.btnOKHotkey,
+                action: function (dialog) {
+                    if (typeof dialog.getData('callback') === 'function' && dialog.getData('callback').call(this, true) === false) {
+                        return false;
+                    }
+
+                    return dialog.close();
+                }
+            }];
+        if (confirmOptions.btnsOrder === BootstrapDialog.BUTTONS_ORDER_OK_CANCEL) {
+            buttons.reverse();
+        }
+        dialog.addButtons(buttons);
 
         return dialog.open();
 
