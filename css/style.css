@@ -13,6 +13,7 @@
 .tab-btn i{font-size:20px;}
 .tab-btn.btn-left{left: 0px;border-right: solid 1px #ccc;}
 .tab-btn.btn-right{right: 0px;border-left: solid 1px #ccc;}
+.tab-btn.btn-right-close{right: 40px;border-left: solid 1px #ccc;}
 .tab-nav{margin-left: 40px;width: 100000px;height: 40px;line-height: 40px;overflow: hidden;}
 .tab-nav-content{float: left;margin-left: 0px;}
 .tab-nav-content a{display:block;color: #999;cursor: auto;border-right: solid 1px #ddd;padding: 0 15px;float:left;}

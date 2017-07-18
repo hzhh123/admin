@@ -115,6 +115,7 @@
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
                         <li><a href="#">Separated link</a></li>
+                        <li><a  href="#" id="btn"><i class="fa fa-plus-circle"></i><span>1111</span></a></li>
                     </ul>
                 </li>
             </ul>
@@ -141,6 +142,7 @@
                     <a href="javascript:;" class="content-tab active" data-id="home.html">首页</a>
                 </div>
             </nav>
+            <button class="tab-btn btn-right-close" title="关闭全部选项卡" ><i class="fa fa-remove"></i></button>
             <button class="tab-btn btn-right"><i class="fa fa-forward"></i></button>
         </div>
         <div class="layout-main-body" >
@@ -161,6 +163,35 @@
 <script type="text/javascript" src="../js/style.js"></script>
 <script type="text/javascript">
     $(function () {
+        /*左侧菜单点击*/
+        $(".metismenu").on('click', 'li a', function(e) {
+            //防止有链接跳转
+            e.preventDefault();
+            var $this = $(this);
+            if($this.attr('href')!=''||$this.attr('href')!='#'||$this.attr('href')!='javascript;'||$this.attr('href')!='javascript:void(0)'){
+                addIframe($this);
+            }
+        });
+        var menu2 = [{"id":"1","name":"主菜单","parentId":"0","url":"","icon":"","order":"1","isHeader":"1","children":[
+            {"id":"3","name":"商品管理","parentId":"1","url":"","icon":"","order":"1","isHeader":"0","children":[
+                {"id":"4","name":"品牌管理","parentId":"3","url":"demo1.html","icon":"","order":"1","isHeader":"0","children":""},
+                {"id":"5","name":"分类管理","parentId":"3","url":"test2.html","icon":"","order":"1","isHeader":"0","children":""}
+            ]},
+            {"id":"6","name":"订单管理","parentId":"1","url":"","icon":"","order":"1","isHeader":"0","children":[
+                {"id":"7","name":"已付款","parentId":"6","url":"home3.html","icon":"","order":"1","isHeader":"0","children":""},
+                {"id":"8","name":"未付款","parentId":"6","url":"home4.html","icon":"","order":"1","isHeader":"0","children":""}
+            ]}
+        ]},
+
+            {"id":"24","name":"框架案例1","parentId":"0","url":"","icon":"","order":"2","isHeader":"1","children":[
+                {"id":"25","name":"新功能","parentId":"24","url":"","icon":"","order":"1","isHeader":"0","children":""},
+
+            ]}
+        ];
+
+
+        initMenu(menu2,$('#menu1'));
+        $('#menu1').metisMenu();
         init(50);
         resize();
         function init(h){
@@ -175,6 +206,12 @@
             $('#overlay').css('display','none');
 
         }
+
+
+        $('#btn').click(function (e) {
+            e.preventDefault();
+            closePageAll()
+        });
 
         function resize(){
             $(window).resize(function () {

@@ -1,15 +1,6 @@
 /**
  * Created by Administrator on 2017/5/17.
  */
-/*左侧菜单点击*/
-$(".metismenu").on('click', 'li a', function(e) {
-    //防止有链接跳转
-    e.preventDefault();
-    var $this = $(this);
-    if($this.attr('href')!=''||$this.attr('href')!='#'||$this.attr('href')!='javascript;'||$this.attr('href')!='javascript:void(0)'){
-        addIframe($this);
-    }
-});
 
 /*添加iframe*/
 var m=1;
@@ -101,6 +92,7 @@ function tabWidth(tabarr) {
 
 /*左按钮事件*/
 $(".btn-left").on("click", leftBtnFun);
+$(".btn-right-close").on("click", closePageAll);
 /*右按钮事件*/
 $(".btn-right").on("click", rightBtnFun);
 /*选项卡切换事件*/
@@ -245,83 +237,34 @@ function closePage() {
     return false
 }
 
-//
+
 /*循环菜单*/
 function initMenu(menu,parent){
     for(var i=0; i<menu.length; i++){
         var item = menu[i];
         var str = "";
         try{
-//                    if(item.isHeader == "1"){
-//                        str = "<li class='menu-header'>"+item.name+"</li>";
-//                        $(parent).append(str);
-//                        if(item.children != ""){
-//                            initMenu(item.children,parent);
-//                        }
-//                    }else{
-//                        item.icon == "" ? item.icon = "fa fa-folder-o" : item.icon = item.icon;
             if(item.children == ""){
-                str = "<li><a href='"+item.url+"'  aria-expanded='false'><span class='"+item.icon+"'></span>&nbsp;"+item.name+"</a></li>";
+                str = "<li><a href='"+item.url+"'  aria-expanded='false'><i class='"+item.icon+"'></i><span>&nbsp;"+item.name+"</span></a></li>";
                 $(parent).append(str);
             }else{
-                str = "<li><a href='"+item.url+"' class='has-arrow' aria-expanded='false'><span class='"+item.icon+"'></span>&nbsp;"+item.name+"</a>";
+                str = "<li><a href='"+item.url+"' class='has-arrow' aria-expanded='false'><i class='"+item.icon+"'></i><span>&nbsp;"+item.name+"</span></a>";
                 str +="<ul aria-expanded='false' id='menu-child-"+item.id+"'></ul></li>";
                 $(parent).append(str);
                 var childParent = $("#menu-child-"+item.id);
                 initMenu(item.children,childParent);
             }
-//                    }
         }catch(e){}
     }
 }
-
-$(function () {
-    var menu2 = [{"id":"1","name":"主菜单","parentId":"0","url":"","icon":"","order":"1","isHeader":"1","children":[
-        {"id":"3","name":"商品管理","parentId":"1","url":"","icon":"","order":"1","isHeader":"0","children":[
-            {"id":"4","name":"品牌管理","parentId":"3","url":"index_v2.html","icon":"","order":"1","isHeader":"0","children":""},
-            {"id":"5","name":"分类管理","parentId":"3","url":"test2.html","icon":"","order":"1","isHeader":"0","children":""}
-        ]},
-        {"id":"6","name":"订单管理","parentId":"1","url":"","icon":"","order":"1","isHeader":"0","children":[
-            {"id":"7","name":"已付款","parentId":"6","url":"home3.html","icon":"","order":"1","isHeader":"0","children":""},
-            {"id":"8","name":"未付款","parentId":"6","url":"home4.html","icon":"","order":"1","isHeader":"0","children":""}
-        ]}
-    ]},
-
-        {"id":"24","name":"框架案例1","parentId":"0","url":"","icon":"","order":"2","isHeader":"1","children":[
-            {"id":"25","name":"新功能","parentId":"24","url":"","icon":"","order":"1","isHeader":"0","children":""},
-
-        ]}
-    ];
-
-//
-    /*循环菜单*/
-    function initMenu(menu,parent){
-        for(var i=0; i<menu.length; i++){
-            var item = menu[i];
-            var str = "";
-            try{
-//                    if(item.isHeader == "1"){
-//                        str = "<li class='menu-header'>"+item.name+"</li>";
-//                        $(parent).append(str);
-//                        if(item.children != ""){
-//                            initMenu(item.children,parent);
-//                        }
-//                    }else{
-//                        item.icon == "" ? item.icon = "fa fa-folder-o" : item.icon = item.icon;
-                if(item.children == ""){
-                    str = "<li><a href='"+item.url+"'  aria-expanded='false'><i class='"+item.icon+"'></i><span>&nbsp;"+item.name+"</span></a></li>";
-                    $(parent).append(str);
-                }else{
-                    str = "<li><a href='"+item.url+"' class='has-arrow' aria-expanded='false'><i class='"+item.icon+"'></i><span>&nbsp;"+item.name+"</span></a>";
-                    str +="<ul aria-expanded='false' id='menu-child-"+item.id+"'></ul></li>";
-                    $(parent).append(str);
-                    var childParent = $("#menu-child-"+item.id);
-                    initMenu(item.children,childParent);
-                }
-//                    }
-            }catch(e){}
-        }
-    }
-    initMenu(menu2,$('#menu1'));
-    $('#menu1').metisMenu();
-})
+//关闭所有tab
+function closePageAll(){
+    $('.content-tab').not(':first-child').each(function () {
+        $(this).remove();
+    });
+    $(".body-iframe").not(':first-child').each(function() {
+        $(this).hide();
+    });
+    $(".body-iframe").eq(0).show();
+    $('.content-tab').eq(0).addClass('active');
+}

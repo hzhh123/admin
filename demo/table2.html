@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="../plugin/bootstrapV3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugin/font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../plugin/bootstrap-table/dist/bootstrap-table.min.css">
+</head>
+<body>
+<body>
+<div class="container">
+    <h1>updateRow</h1>
+    <p>
+        Update the specified row, the param contains following properties: <br>
+        index: the row index to be updated. <br>
+        row: the row data.<br>
+        <code>$table.bootstrapTable('updateRow', {index: 1, row: row});</code>
+    </p>
+    <div id="toolbar">
+        <button id="button" class="btn btn-default">updateRow</button>
+    </div>
+    <table id="table"
+           data-toggle="table"
+           data-toolbar="#toolbar"
+           data-height="428"
+           data-url="data1.json">
+        <thead>
+        <tr>
+            <th data-field="id">ID</th>
+            <th data-field="name">Item Name</th>
+            <th data-field="price">Item Price</th>
+            <th data-field="option">option</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+<script type="text/javascript" src="../plugin/bootstrapV3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../plugin/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="../plugin/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+<script>
+
+
+    $(function () {
+        var $table = $('#table'),
+            $button = $('#button');
+        $button.click(function () {
+            var randomId = 100 + ~~(Math.random() * 100);
+            $table.bootstrapTable('updateRow', {
+                index: 1,
+                row: {
+                    name: 'Item ' + randomId,
+                    price: '$' + randomId
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

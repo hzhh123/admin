@@ -79,7 +79,7 @@ module.exports = function (grunt) {
     function transpile(opts) {
         // base, entry, skipMoment, headerFile, skipLines, target
         var umdName = opts.headerFile != null && opts.headerFile !== 'none' ? 'not_used' : opts.umdName,
-            headerFile = opts.headerFile ? opts.headerFile : 'templates/default.js',
+            headerFile = opts.headerFile ? opts.headerFile : 'templates/IframeTab.js',
             header = getHeaderByFile(headerFile),
             skipLines = opts.skipLines != null ? opts.skipLines : 5;
 
@@ -169,7 +169,7 @@ module.exports = function (grunt) {
             code: code,
             target: target,
             skipMoment: opts.skipMoment,
-            headerFile: opts.skipMoment === true ? 'templates/locale-header.js' : 'templates/default.js',
+            headerFile: opts.skipMoment === true ? 'templates/locale-header.js' : 'templates/IframeTab.js',
             skipLines: opts.skipMoment === true ? 7 : 5
         });
     }
